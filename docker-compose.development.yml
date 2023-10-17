@@ -1,0 +1,16 @@
+version: "3.9"
+
+networks:
+  network_app:
+    driver: bridge
+
+services:
+  ubuntu:
+    container_name: ${APP_NAME}_ubuntu
+    hostname: ubuntu
+    build:
+      context: ./.docker/development/ubuntu
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    networks:
+      - network_app
